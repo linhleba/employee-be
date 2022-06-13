@@ -5,6 +5,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 // import lombok.Data;
@@ -46,8 +49,25 @@ public class Employee {
     @Column(name = "start_date", nullable = false)
     private String startDate;
 
-    @Column(name = "team", nullable = false)
-    private int team;
+    @Column(name = "url_image", nullable = true)
+    private String urlImage;
+
+    // @OneToOne(mappedBy = "team")
+    @ManyToOne()
+    @JoinColumn(name = "team_id", referencedColumnName = "id")
+    private Team team;
+
+    public void setEmployee(Employee employee) {
+        this.fullName = employee.fullName;
+        this.sex = employee.sex;
+        this.age = employee.age;
+        this.phone = employee.phone;
+        this.address = employee.address;
+        this.money = employee.money;
+        this.startDate = employee.startDate;
+        this.urlImage = employee.urlImage;
+        this.team.setId(employee.team.getId());
+    }
 
     public int getSex() {
         return sex;
@@ -97,11 +117,21 @@ public class Employee {
         this.startDate = startDate;
     }
 
-    public int getTeam() {
+    public Team getTeam() {
         return team;
     }
 
-    public void setTeam(int team) {
+    public void setTeam(Team team) {
+        // this.team = team.getId();
+        // ;
         this.team = team;
+    }
+
+    public String getUrlImage() {
+        return urlImage;
+    }
+
+    public void setUrlImage(String urlImage) {
+        this.urlImage = urlImage;
     }
 }

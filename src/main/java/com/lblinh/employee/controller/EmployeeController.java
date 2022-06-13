@@ -13,11 +13,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.*;
 import com.lblinh.employee.model.Employee;
 import com.lblinh.employee.service.EmployeeService;
 
 @RestController
-@RequestMapping(value = "/api", method = { RequestMethod.GET, RequestMethod.POST })
+// @RequestMapping(value = "/api/employee", method = { RequestMethod.GET,
+// RequestMethod.POST })
+@RequestMapping("/api/employee")
 public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
@@ -29,11 +32,31 @@ public class EmployeeController {
 
     // create employee
     // build create employee REST API
-    @PostMapping("/employee")
+    @PostMapping()
     public ResponseEntity<Employee> saveEmployee(@RequestBody Employee employee) {
         // System.out.println("employee payload is," + employee);
         return new ResponseEntity<Employee>(employeeService.saveEmployee(employee),
                 HttpStatus.CREATED);
     }
 
+    // get all employees
+    @GetMapping
+    public List<Employee> getAllEmployees() {
+        return employeeService.getAllEmployees();
+    }
+
+    @GetMapping("{id}")
+    public ResponseEntity<Employee> getEmployeeById(@PathVariable("id") int id) {
+        return new ResponseEntity<Employee>(employeeService.getEmployeeById(id), HttpStatus.OK);
+    }
+
+    @PutMapping("{id}")
+    public ResponseEntity<Employee> updateEmployee(@PathVariable("id") int id, @RequestBody Employee employee) {
+        return new ResponseEntity<Employee>(employeeService.updateEmployee(employee, id), HttpStatus.OK);
+    }
+
+    @DeleteMapping("/delete/{ids}")
+    public ResponseEntity<String> deleteEmployee(@PathVariable List<Integer> ids) {
+        return new ResponseEntity<String>(employeeService.deleteEmployees(ids), HttpStatus.OK);
+    }
 }
