@@ -1,5 +1,8 @@
 package com.lblinh.employee.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,12 +10,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 // import lombok.Data;
 
 // @Data
+
 @Entity
 @Table(name = "employee")
 public class Employee {
@@ -54,8 +61,25 @@ public class Employee {
 
     // @OneToOne(mappedBy = "team")
     @ManyToOne()
+    @JsonIgnore
     @JoinColumn(name = "team_id", referencedColumnName = "id")
     private Team team;
+
+    @OneToMany(mappedBy = "employee")
+    @JsonIgnore
+    private List<Working> working = new ArrayList<Working>();
+
+    @OneToMany(mappedBy = "employee")
+    @JsonIgnore
+    private List<Advance> advance = new ArrayList<Advance>();
+
+    public List<Working> getWorking() {
+        return working;
+    }
+
+    public void setWorking(List<Working> working) {
+        this.working = working;
+    }
 
     public void setEmployee(Employee employee) {
         this.fullName = employee.fullName;
@@ -133,5 +157,13 @@ public class Employee {
 
     public void setUrlImage(String urlImage) {
         this.urlImage = urlImage;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
