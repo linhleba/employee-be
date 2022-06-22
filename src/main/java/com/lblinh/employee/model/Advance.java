@@ -21,29 +21,29 @@ public class Advance {
     private int id;
 
     @Column(name = "date", nullable = false)
-    private Date date;
+    private String date;
 
     @Column(name = "money", nullable = false)
-    private long hour;
+    private int money;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "employee_id", referencedColumnName = "id")
     private Employee employee;
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
-    public long getHour() {
-        return hour;
+    public int getMoney() {
+        return money;
     }
 
-    public void setHour(long hour) {
-        this.hour = hour;
+    public void setMoney(int money) {
+        this.money = money;
     }
 
     public Employee getEmployee() {
@@ -52,5 +52,13 @@ public class Advance {
 
     public void setEmployee(Employee employee) {
         this.employee = employee;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

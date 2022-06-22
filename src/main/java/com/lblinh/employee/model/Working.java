@@ -19,7 +19,7 @@ public class Working {
     private int id;
 
     @Column(name = "date", nullable = false)
-    private Date date;
+    private String date;
 
     @Column(name = "hour", nullable = false)
     private int hour;
@@ -35,11 +35,11 @@ public class Working {
         this.employee.setId(working.employee.getId());
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
@@ -59,5 +59,13 @@ public class Working {
         this.employee = new Employee();
         // this.employee.setEmployee(employee);
         this.employee.setId(employee.getId());
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

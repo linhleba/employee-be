@@ -1,5 +1,6 @@
 package com.lblinh.employee.service;
 
+import com.lblinh.employee.dto.EmployeeDTO;
 import com.lblinh.employee.model.Employee;
 
 import java.util.*;;
@@ -7,7 +8,7 @@ import java.util.*;;
 public interface EmployeeService {
     Employee saveEmployee(Employee employee);
 
-    List<Employee> getAllEmployees();
+    Set<EmployeeDTO> getAllEmployees();
 
     Employee getEmployeeById(int id);
 

@@ -35,7 +35,7 @@ public class AdvanceServiceImpl implements AdvanceService {
         if (advance != null) {
             return advance;
         } else {
-            throw new ResourceNotFoundException("Working", "Id", id);
+            throw new ResourceNotFoundException("Advance", "Id", id);
         }
     }
 

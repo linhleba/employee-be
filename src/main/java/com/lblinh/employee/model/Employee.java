@@ -14,7 +14,11 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 // import lombok.Data;
 
@@ -60,8 +64,11 @@ public class Employee {
     private String urlImage;
 
     // @OneToOne(mappedBy = "team")
-    @ManyToOne()
-    @JsonIgnore
+    // @JsonBackReference
+
+    // @JsonIgnore
+    @JsonBackReference
+    @ManyToOne(optional = false)
     @JoinColumn(name = "team_id", referencedColumnName = "id")
     private Team team;
 
@@ -79,6 +86,14 @@ public class Employee {
 
     public void setWorking(List<Working> working) {
         this.working = working;
+    }
+
+    public List<Advance> getAdvance() {
+        return advance;
+    }
+
+    public void setAdvance(List<Advance> advance) {
+        this.advance = advance;
     }
 
     public void setEmployee(Employee employee) {

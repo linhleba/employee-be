@@ -34,6 +34,7 @@ public class TeamServiceImpl implements TeamService {
     @Override
     public Team getTeamById(int id) {
         Optional<Team> team = teamRepository.findById(id);
+
         if (team.isPresent()) {
             return team.get();
         } else {

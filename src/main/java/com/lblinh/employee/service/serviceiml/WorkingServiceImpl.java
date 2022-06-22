@@ -30,8 +30,6 @@ public class WorkingServiceImpl implements WorkingService {
 
     @Override
     public List<Working> getWorkingByEmployeeId(int id) {
-        // Optional<Employee> working = workingRepository.findBy(example,
-        // queryFunction);
         List<Working> working = workingRepository.getWorking(id);
         if (working != null) {
             return working;
