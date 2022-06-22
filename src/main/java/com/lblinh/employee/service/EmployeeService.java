@@ -10,7 +10,7 @@ public interface EmployeeService {
 
     Set<EmployeeDTO> getAllEmployees();
 
-    Employee getEmployeeById(int id);
+    EmployeeDTO getEmployeeById(int id);
 
     Employee updateEmployee(Employee employee, int id);
 

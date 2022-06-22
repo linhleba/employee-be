@@ -64,10 +64,10 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public Employee getEmployeeById(int id) {
+    public EmployeeDTO getEmployeeById(int id) {
         Optional<Employee> employee = employeeRepository.findById(id);
         if (employee.isPresent()) {
-            return employee.get();
+            return mapper.map(employee.get(), EmployeeDTO.class);
         } else {
             throw new ResourceNotFoundException("Employee", "Id", id);
         }

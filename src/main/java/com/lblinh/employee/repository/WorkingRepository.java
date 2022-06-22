@@ -10,4 +10,7 @@ import com.lblinh.employee.model.Working;
 public interface WorkingRepository extends JpaRepository<Working, Integer> {
     @Query(value = "SELECT * FROM working where employee_id=?1", nativeQuery = true)
     public List<Working> getWorking(int employeeId);
+
+    @Query(value = "SELECT COUNT(distinct date) AS workingdays FROM working where employee_id=?1", nativeQuery = true)
+    public String getWorkingDays(int employeeId);
 }

@@ -12,4 +12,6 @@ public interface WorkingService {
     List<Working> getWorkingByEmployeeId(int id);
 
     String deleteWorking(int id);
+
+    String getNumberWokring(int id);
 }

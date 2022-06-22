@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 @NoArgsConstructor
 public class EmployeeDTO {
     private int id;
+    private int sex;
     private String fullName;
     private int age;
     private String phone;

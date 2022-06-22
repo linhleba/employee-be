@@ -51,4 +51,10 @@ public class WorkingController {
     public ResponseEntity<String> deleteWorking(@PathVariable int id) {
         return new ResponseEntity<String>(workingService.deleteWorking(id), HttpStatus.OK);
     }
+
+    @GetMapping("/getWorking/{id}")
+    public ResponseEntity<String> getWorkingDays(@PathVariable int id) {
+        return new ResponseEntity<String>(workingService.getNumberWokring(id), HttpStatus.OK);
+
+    }
 }

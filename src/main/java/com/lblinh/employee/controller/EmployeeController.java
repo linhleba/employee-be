@@ -50,8 +50,8 @@ public class EmployeeController {
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<Employee> getEmployeeById(@PathVariable("id") int id) {
-        return new ResponseEntity<Employee>(employeeService.getEmployeeById(id), HttpStatus.OK);
+    public ResponseEntity<EmployeeDTO> getEmployeeById(@PathVariable("id") int id) {
+        return new ResponseEntity<EmployeeDTO>(employeeService.getEmployeeById(id), HttpStatus.OK);
     }
 
     @PutMapping("{id}")

@@ -50,4 +50,12 @@ public class WorkingServiceImpl implements WorkingService {
             return "Deleted failed";
         }
     }
+
+    @Override
+    public String getNumberWokring(int id) {
+        // TODO Auto-generated method stub
+
+        return workingRepository.getWorkingDays(id);
+
+    }
 }
