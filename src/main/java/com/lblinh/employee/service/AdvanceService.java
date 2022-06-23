@@ -12,4 +12,6 @@ public interface AdvanceService {
     List<Advance> getAdvanceByEmployeeId(int id);
 
     String deleteAdvance(int id);
+
+    String getTotalAdvances(int id);
 }

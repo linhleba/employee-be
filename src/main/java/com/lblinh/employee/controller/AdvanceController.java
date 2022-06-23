@@ -45,4 +45,10 @@ public class AdvanceController {
     public ResponseEntity<String> deleteAdvance(@PathVariable int id) {
         return new ResponseEntity<String>(advanceService.deleteAdvance(id), HttpStatus.OK);
     }
+
+    @GetMapping("/totalAdvance/{id}")
+    public ResponseEntity<String> getWorkingDays(@PathVariable int id) {
+        return new ResponseEntity<String>(advanceService.getTotalAdvances(id), HttpStatus.OK);
+
+    }
 }

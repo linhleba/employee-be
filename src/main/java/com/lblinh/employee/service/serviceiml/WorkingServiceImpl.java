@@ -58,4 +58,10 @@ public class WorkingServiceImpl implements WorkingService {
         return workingRepository.getWorkingDays(id);
 
     }
+
+    @Override
+    public String getTotalMoney(int id) {
+        // TODO Auto-generated method stub
+        return workingRepository.getTotalMoney(id);
+    }
 }

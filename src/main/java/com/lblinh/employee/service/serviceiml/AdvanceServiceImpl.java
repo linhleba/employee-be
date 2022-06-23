@@ -50,4 +50,9 @@ public class AdvanceServiceImpl implements AdvanceService {
         }
     }
 
+    @Override
+    public String getTotalAdvances(int id) {
+        return advanceRepository.getTotalAdvances(id);
+    }
+
 }

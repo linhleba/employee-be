@@ -13,4 +13,9 @@ public interface WorkingRepository extends JpaRepository<Working, Integer> {
 
     @Query(value = "SELECT COUNT(distinct date) AS workingdays FROM working where employee_id=?1", nativeQuery = true)
     public String getWorkingDays(int employeeId);
+
+    @Query(value = "select sum(hour) * employee.money FROM working join employee on employee.id=working.employee_id and employee.id=?1", nativeQuery = true)
+
+    public String getTotalMoney(int employeeId);
+
 }

@@ -57,4 +57,11 @@ public class WorkingController {
         return new ResponseEntity<String>(workingService.getNumberWokring(id), HttpStatus.OK);
 
     }
+
+    @GetMapping("/totalMoney/{id}")
+    public ResponseEntity<String> getTotalMoney(@PathVariable int id) {
+        return new ResponseEntity<String>(workingService.getTotalMoney(id), HttpStatus.OK);
+
+    }
+
 }

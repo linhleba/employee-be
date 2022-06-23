@@ -14,4 +14,6 @@ public interface WorkingService {
     String deleteWorking(int id);
 
     String getNumberWokring(int id);
+
+    String getTotalMoney(int id);
 }
