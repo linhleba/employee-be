@@ -14,4 +14,7 @@ public interface AdvanceRepository extends JpaRepository<Advance, Integer> {
     @Query(value = "SELECT SUM(money) FROM advance where employee_id=?1", nativeQuery = true)
     public String getTotalAdvances(int employeeId);
 
+    @Query(value = "SELECT * FROM advance where employee_id=?1", nativeQuery = true)
+    List<Advance> findAllByEmployee(Integer id);
+
 }

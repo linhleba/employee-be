@@ -18,4 +18,7 @@ public interface WorkingRepository extends JpaRepository<Working, Integer> {
 
     public String getTotalMoney(int employeeId);
 
+    @Query(value = "SELECT * FROM working where employee_id=?1", nativeQuery = true)
+    List<Working> findAllByEmployee(Integer id);
+
 }

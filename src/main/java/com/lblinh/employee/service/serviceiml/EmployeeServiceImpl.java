@@ -11,7 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.lblinh.employee.exception.ResourceNotFoundException;
+import com.lblinh.employee.model.Advance;
 import com.lblinh.employee.model.Employee;
+import com.lblinh.employee.model.Working;
 import com.lblinh.employee.repository.AdvanceRepository;
 import com.lblinh.employee.repository.EmployeeRepository;
 import com.lblinh.employee.repository.WorkingRepository;
@@ -25,7 +27,9 @@ public class EmployeeServiceImpl implements EmployeeService {
     private ModelMapper mapper;
 
     private EmployeeRepository employeeRepository;
+    @Autowired
     private WorkingRepository workingRepository;
+    @Autowired
     private AdvanceRepository advanceRepository;
     // EmployeeDTO employeeDTO = mapper.map(employeeRepository, EmployeeDTO.class);
 
@@ -93,9 +97,27 @@ public class EmployeeServiceImpl implements EmployeeService {
             // employeeRepository.deleteById(id);
             // }
             for (int id : ids) {
+                // workingRepository.deleteById(id);
+                List<Advance> advance = advanceRepository.findAllByEmployee(id);
+                if (!advance.isEmpty()) {
+                    for (Advance item : advance) {
+
+                        advanceRepository.delete(item);
+                    }
+                }
+
+                List<Working> working = workingRepository.findAllByEmployee(id);
+                if (!working.isEmpty()) {
+                    for (Working item : working) {
+                        workingRepository.delete(item);
+                    }
+                }
+
                 employeeRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Employee", "Id", id));
                 employeeRepository.deleteById(id);
+
             }
+
             return "Deleted successfully";
         } catch (Exception e) {
             return "Deleted failed";
